@@ -1,0 +1,129 @@
+<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Form Contain</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Barcode</th>
+        <th scope="col">Created Date</th>
+        <th scope="col">Expired Date</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <button type="button" style="float:right ;" (click)="addNewelement()">Add Product</button>
+      </tr>
+    </thead>
+    <br>
+    <tbody>
+      <tr *ngFor="let item of crud;index as i;">
+        <th scope="row">{{i+1}}</th>
+        <td>{{item.formContain}}</td>
+        <td>{{item.productName}}</td>
+        <td>{{item.barcode}}</td>
+        <td>{{item.createdDate}}</td>
+        <td>{{item.expiredDate}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.quantity}}</td>    
+        <td><i class="bi bi-pencil" (click)="edit(item)"></i></td>
+        <td><i class="bi bi-trash" (click)="delete(item._id)"></i></td>
+      </tr>
+  
+    </tbody>
+  </table>
+  <div class="container" *ngIf="checkAdd">
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Form Contain</label>
+        <input [(ngModel)]="fcontain" [ngModelOptions]="{standalone: true}" type="name" class="form-control" placeholder="Form Contain">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Product Name</label>
+        <input [(ngModel)]="pname" [ngModelOptions]="{standalone: true}" type="name" class="form-control"
+          placeholder="Product Name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Barcode</label>
+        <input [(ngModel)]="bcode" [ngModelOptions]="{standalone: true}" type="text" class="form-control">
+      </div> 
+      <div class="form-group">
+        <label for="exampleInputPassword1">Create Date</label>
+        <input [(ngModel)]="cdate" [ngModelOptions]="{standalone: true}" type="date" class="form-control"
+          >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Expired Date</label>
+        <input [(ngModel)]="edate" [ngModelOptions]="{standalone: true}" type="date" class="form-control"
+         >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Price</label>
+        <input [(ngModel)]="pricee" [ngModelOptions]="{standalone: true}" type="number" class="form-control"
+         >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Quantity</label>
+        <input [(ngModel)]="quant" [ngModelOptions]="{standalone: true}" type="number" class="form-control"
+         >
+      </div>
+      <br>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary" (click)="add()">Submit</button>
+  
+      </div>
+    </form>
+  </div>
+  
+  
+  
+  <div class="container" *ngIf="checkEdit">
+    <form>
+  
+      <div class="form-group">
+        <label for="exampleInputEmail1">Form Contain</label>
+        <input [(ngModel)]="id.formContain" [ngModelOptions]="{standalone: true}" type="name" class="form-control"
+          aria-describedby="emailHelp" placeholder={{id.formContain}}>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Product Name</label>
+        <input [(ngModel)]="id.productName" [ngModelOptions]="{standalone: true}" type="name" class="form-control"
+          placeholder={{id.productName}}>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Barcode</label>
+        <input [(ngModel)]="id.barcode" [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+          placeholder={{id.barcode}}>
+      </div><br>
+      <!-- <div class="form-group">
+        <label for="exampleInputPassword1">Phone Number</label>
+        <input [(ngModel)]="id.phone" [ngModelOptions]="{standalone: true}" type="phone" class="form-control"type="text" ng2TelInput
+          placeholder={{id.phone}}>
+      </div> -->
+      <div class="form-group">
+        <label for="exampleInputPassword1">Created Date</label>
+        <input [(ngModel)]="id.createdDate" [ngModelOptions]="{standalone: true}" type="date" class="form-control"
+          placeholder={{id.createdDate}}>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Expired Date</label>
+        <input [(ngModel)]="id.expiredDate" [ngModelOptions]="{standalone: true}" type="date" class="form-control"
+          placeholder={{id.expiredDate}}>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Price</label>
+        <input [(ngModel)]="id.price" [ngModelOptions]="{standalone: true}" type="short" class="form-control"
+          placeholder={{id.price}}>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Quantity</label>
+        <input [(ngModel)]="id.quantity" [ngModelOptions]="{standalone: true}" type="short" class="form-control"
+          placeholder={{id.quantity}}>
+      </div>
+      <br>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary" (click)="update()">Submit</button>
+  
+      </div>
+    </form>
+  </div>
+
+
+
